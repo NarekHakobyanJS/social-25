@@ -13,8 +13,8 @@ class SocialAPI {
         })
     }
 
-    async getUsers(){
-        return SocialAPI.insanceAxios().get<IUsersData>('/users')
+    async getUsers({page, totalPageCount} : {page : number, totalPageCount : number}){
+        return SocialAPI.insanceAxios().get<IUsersData>(`/users?page=${page}&count=${totalPageCount}`)
     }
 }
 
