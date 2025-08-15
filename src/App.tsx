@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage/HomePage'
 import Layout from './components/feature/Layout/Layout'
@@ -6,8 +5,9 @@ import UsersPage from './pages/UsersPage/UsersPage'
 
 
 
-function App() {
 
+function App() {
+  
   return (
     <>
       <Routes>
