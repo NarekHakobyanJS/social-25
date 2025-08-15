@@ -13,9 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import InstagramIcon from '@mui/icons-material/Instagram';
-
-const pages = ['Users', 'Friends'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { pages, settings } from '../../../data';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -37,7 +36,7 @@ function Header() {
   };
 
   return (
-    <AppBar color='secondary' position="sticky">
+    <AppBar color='secondary' position="sticky" sx={{mb : 2}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <InstagramIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 30, fontSize : '30px' }} />
@@ -73,8 +72,14 @@ function Header() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+
+                  <Typography sx={{ textAlign: 'center' }}>
+                    <NavLink to={page.path}>
+                    {page.name}
+                    </NavLink>
+                   
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -101,11 +106,15 @@ function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                color='error'
+                key={page.id}
+                variant='contained'
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', mr : 1 }}
               >
-                {page}
+                  <NavLink style={{color : 'white', textDecoration : 'none'}} to={page.path}>
+                    {page.name}
+                  </NavLink>
               </Button>
             ))}
           </Box>
